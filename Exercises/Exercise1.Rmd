@@ -1,0 +1,40 @@
+---
+title: "Exercise 1"
+author: "Antonio Rodriguez"
+---
+
+
+```{r}
+#Read the cars data
+
+cars <-read.csv("../data-visualization-Andrew Heiss/data/cars.csv", header = T)
+
+#Check the variables included (numerical, and text variables)
+
+str(cars)
+
+```
+
+```{r}
+# My first plots
+#Insert a chunk below and use it to create a scatterplot (hint: `geom_point()`) with diplacement (`displ`) on the x-axis, city MPG (`cty`) on #the y-axis, and with the points colored by drive (`drv`).
+
+ggplot(data = cars, aes(x = displ, y = cty)) + geom_point( alpha = 0.1, aes(color = drv)) # Scatter Plot
+```
+
+
+```{r}
+ggplot(data = cars, aes(x = hwy)) + geom_histogram()
+
+```
+
+```{r}
+# My first data manipulation
+#Insert a chunk below and use it to calculate the average city MPG (`cty`) by class of car (`class`). This won't be a plot---it'll be a table. Hint: use a combination of #`group_by()` and `summarize()`.
+
+cars %>% group_by(class) %>% 
+  summarize(cty)
+
+```
+
+
